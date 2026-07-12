@@ -7,6 +7,9 @@ in the doping ontology. Each entry reflects the **current** schema.
 
 ## Classes
 
+### PermittedThreshold
+The maximum number of allowed units that can be found either in the blood or urine sample for a Prohibited Substance.
+
 ### ProhibitedItem
 A substance or a method banned under the WADA Prohibited List. This is a general category for a doping.
 It exists so that properties shared by both
