@@ -43,7 +43,7 @@ An Olympic sport or discipline, used to scope `SportSpecificRule`
 entries (e.g. Archery, Shooting).
 
 ### PhysiologicalSystem
-A physiological system within the body that is affected by a prohibited substance. This only connected to substances because the method's effect on the bodu is indirect.
+A physiological system within the body that is affected by a prohibited substance. This only connected to substances because the method's effect on the body is indirect.
 
 ### ProhibitionContext
 The scope of a prohibition: `InCompetition`, `OutOfCompetition`, or
