@@ -172,8 +172,8 @@ The unit of measurement for `permittedThreshold` (e.g. "ng/mL").
 
 *Range:* `xsd:string`
 
-Which biological sample type the threshold or detection applies to —
-"urine", "blood", or "both".
+Which biological sample type the threshold or detection applies to. Can be
+"urine" or "blood" 
 
 ### classCode
 *Domain:* `WADAClass`
