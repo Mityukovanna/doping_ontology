@@ -86,7 +86,7 @@ applies uniformly across all sports.
 Identifies which sport a given `SportSpecificRule` applies to.
 
 ### hasProhibitionContext
-*Domain:* `ProhibitedItem` or `SportSpecificRule`
+*Domain:* `SportSpecificRule`
 
 *Range:* `ProhibitionContext`
 
