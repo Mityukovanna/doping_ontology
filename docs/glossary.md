@@ -197,18 +197,11 @@ The kind of exception (e.g. "TUE", "threshold",
 
 Whether this exception requires a formal application and approval
 
-### approvalBody
-*Domain:* `UsageException`
-
-*Range:* `xsd:string`
-
-The body responsible for granting the exception, where formal approval
-is required (e.g. "WADA", "NADO", "IF").
 
 ### icdCode
 *Domain:* `HealthCondition`
 
 *Range:* `xsd:string`
 
-External identifier for the condition, for future alignment with
+External identifier for the Physiological condition, for future alignment with
 ICD-11 or SNOMED CT.
