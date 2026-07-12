@@ -159,15 +159,6 @@ The CAS Registry Number. This is a universal chemical identifier. Retained
 specifically as the key for future alignment with external databases
 such as ChEBI, via `owl:sameAs`.
 
-### permittedThreshold
-*Domain:* `ProhibitedSubstance`
-
-*Range:* `xsd:float`
-
-The maximum concentration permitted before a result is treated as an
-anti-doping rule violation. Absent for substances with zero tolerance.
-Stored as a number (not a string) so it can be filtered, compared, and
-sorted; always paired with `thresholdUnit`.
 
 ### thresholdUnit
 *Domain:* `ProhibitedSubstance`
