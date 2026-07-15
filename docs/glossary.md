@@ -1,106 +1,92 @@
 # Glossary
 
 Plain-language definitions for every class, object property, and data property
-in the doping ontology. Each entry reflects the **current** schema. 
+in the doping ontology. Each entry reflects the **current** schema.
 
 ---
 
 ## Classes
 
-### PermittedThreshold
-The maximum number of allowed units that can be found either in the blood or urine sample for a Prohibited Substance.
-
-### ProhibitedItem
+### Doping
 A substance or a method banned under the WADA Prohibited List. This is a general category for a doping.
 It exists so that properties shared by both
-(`belongsToClass`, `hasUsageException`, `hasProhibitionContext`,
-`hasSportSpecificRule`) only need to be defined once.
+(`belongsToClass`, `hasUsageException`, `appliesToSport`, `isSpecified`)
+only need to be defined once.
 
 ### ProhibitedSubstance
 A chemical substance that is used to enhance performance in sports
-(e.g. testosterone, salbutamol). Subclass of `ProhibitedItem`.
-Disjoint with `ProhibitedMethod`. 
+(e.g. testosterone, salbutamol). Subclass of `Doping`.
+Disjoint with `ProhibitedMethod`.
 
 ### ProhibitedMethod
-Type of physiological manipulation that can be used to gain unfair advantage. 
+Type of manipulation that can be used to gain unfair advantage.
 For example, blood transfusion, gene doping.
-Subclass of `ProhibitedItem`. Disjoint with `ProhibitedSubstance`.
+Subclass of `Doping`. Disjoint with `ProhibitedSubstance`.
 
 ### WADAClass
-A category defined by WADA for groupping prohibited items. 
-
-### SportSpecificRule
-A rule that explains why a specific banned item is allowed in a particular sport. Exists because for some sports a prohibited item might be banned in-competition only and for others it might be banned at all times. Each rule links one `ProhibitedItem` to one `Sport` and one `ProhibitionContext`.
+A category defined by WADA for groupping prohibited items.
 
 ### UsageException
-A condition under which the prohibited Item is allowed in competition. This covers therapeutic use exemptions (TUEs), permitted thresholds, and
-sport-specific rules. Exists as its own class (rather than a
-property directly on `ProhibitedItem`) because the exception itself
-carries metadata that does not belong to the substance (type, approval body, whether formal approval is required)
+A condition under which the prohibited Item is allowed in competition. This covers therapeutic use exemptions and permitted thresholds (its two subclasses). Exists as its own class (rather than a
+property directly on `Doping`) because the exception itself
+carries metadata that does not belong to the substance (approval body, whether formal approval is required).
+
+### TherapeuticUseExemption
+A usage exception granted on the basis of a documented health condition, permitting an athlete to use an otherwise-prohibited substance or method for legitimate medical treatment. Subclass of `UsageException`.
+
+### PermittedThreshold
+A usage exception under which a `ProhibitedSubstance` is permitted for use up to a defined concentration limit in a biological sample (blood or urine), rather than being subject to zero tolerance. Subclass of `UsageException`.
 
 ### HealthCondition
-A medical condition under which the use of a prohibited item is allowed. Justifies the `UsageException` 
+A medical condition under which the use of a prohibited item is allowed. Justifies the `UsageException`.
 
 ### Sport
-An Olympic sport or discipline, used to scope `SportSpecificRule`
-entries (e.g. Archery, Shooting).
+An Olympic sport or discipline, used to scope prohibition via `hasProhibitionScope` (e.g. Archery, Shooting).
 
 ### PhysiologicalSystem
-A physiological system within the body that is affected by a prohibited substance. This only connected to substances because the method's effect on the body is indirect.
+A physiological system within the body that is affected by a prohibited substance. This is only connected to substances because the method's effect on the body is indirect.
 
-### ProhibitionContext
-The scope of a prohibition: `InCompetition`, `OutOfCompetition`, or
-`AllTimes`. Defined as a closed set via `owl:oneOf`. These three
-individuals are the *only* possible members; nothing else can ever be
-asserted as a `ProhibitionContext`.
+### ProhibitionScope
+The scope of a prohibition. Defined as a closed set via `owl:oneOf`
+containing exactly two individuals: `AllTimes` and `InCompetition`.
+These are the *only* possible members; nothing else can ever be
+asserted as a `ProhibitionScope`.
 
 ---
 
 ## Object Properties
 
 ### belongsToClass
-*Domain:* `ProhibitedItem`
+*Domain:* `Doping`
 
 *Range:* `WADAClass`
 
-*Not fucntional*: An item may belong to more than one WADA class
+*Not functional*: An item may belong to more than one WADA class.
 
-Links an item to the regulatory class(es) it falls under. 
-
-### hasSportSpecificRule
-*Domain:* `ProhibitedItem`
-
-*Range:* `SportSpecificRule`
-
-Links an item to a sport-specific override of its general prohibition
-context. Absence of this relation means the item's prohibition context
-applies uniformly across all sports.
+Links an item to the regulatory class(es) it falls under.
 
 ### appliesToSport
-*Domain:* `SportSpecificRule`
+*Domain:* `Doping`
 
 *Range:* `Sport`
 
-*Functional*: each rule applies exactly to one sport
+*Functional*: each item applies to exactly one sport.
 
-Identifies which sport a given `SportSpecificRule` applies to.
+Identifies which sport a given item applies to.
 
-### hasProhibitionContext
-*Domain:* `SportSpecificRule`
+### hasProhibitionScope
+*Domain:* `Sport`
 
-*Range:* `ProhibitionContext`
+*Range:* `ProhibitionScope`
 
-*Functional*: provides one context per item, one per rule
-
-States whether an item (or a sport-specific rule) is prohibited
-in-competition, out-of-competition, or at all times.
+States whether a sport-specific rule is prohibited in-competition, or at all times.
 
 ### hasUsageException
-*Domain:* `ProhibitedItem`
+*Domain:* `Doping`
 
 *Range:* `UsageException`
 
-*Not functional*: an item might have multiple usage exceptions 
+*Not functional*: an item might have multiple usage exceptions.
 
 Links an item to an exception that permits its use under defined
 conditions.
@@ -118,11 +104,10 @@ Inverse of `permitsUseOf`.
 
 *Range:* `UsageException`
 
-
-The reverse of `appliesToCondition`. States what usage exception is applied to a given health condition
+The reverse of `appliesToCondition`. States what usage exception is applied to a given health condition.
 
 ### affectsPhysiologicalSystem
-*Domain:* `ProhibitedItem`*
+*Domain:* `ProhibitedSubstance`
 
 *Range:* `PhysiologicalSystem`
 
@@ -134,7 +119,7 @@ enhances performance. Only populated for the `ProhibitedSubstance` individuals.
 ## Data Properties
 
 ### isSpecified
-*Domain:* `ProhibitedItem`
+*Domain:* `Doping`
 
 *Range:* `xsd:boolean`
 
@@ -143,7 +128,7 @@ Whether the item is classified by WADA as a "specified" substance/method
 "non-specified."
 
 ### hasZeroTolerance
-*Domain:* `ProhibitedItem`
+*Domain:* `ProhibitedSubstance`
 
 *Range:* `xsd:boolean`
 
@@ -156,24 +141,29 @@ opposed to being subject to a permitted threshold.
 *Range:* `xsd:string`
 
 The CAS Registry Number. This is a universal chemical identifier. Retained
-specifically as the key for future alignment with external databases
-such as ChEBI, via `owl:sameAs`.
-
-
-### thresholdUnit
-*Domain:* `ProhibitedSubstance`
-
-*Range:* `xsd:string`
-
-The unit of measurement for `permittedThreshold` (e.g. "ng/mL").
+specifically as the key for future alignment with external databases.
 
 ### sampleType
-*Domain:* `ProhibitedSubstance`
+*Domain:* `PermittedThreshold`
+
+*Range:* enumerated datatype (`owl:oneOf`) restricted to `"blood"` or `"urine"`
+
+Which biological sample type the threshold or detection applies to.
+
+### thresholdUnit
+*Domain:* `PermittedThreshold`
 
 *Range:* `xsd:string`
 
-Which biological sample type the threshold or detection applies to. Can be
-"urine" or "blood" 
+The unit of measurement for `thresholdValue` (e.g. "ng/mL").
+
+### thresholdValue
+*Domain:* `PermittedThreshold`
+
+*Range:* `xsd:float`
+
+The numeric concentration limit for a permitted threshold, paired with
+`thresholdUnit` and `sampleType`.
 
 ### classCode
 *Domain:* `WADAClass`
@@ -182,21 +172,12 @@ Which biological sample type the threshold or detection applies to. Can be
 
 The official WADA code for the class (e.g. "S1", "M1", "P1").
 
-### exceptionType
-*Domain:* `UsageException`
-
-*Range:* `xsd:string`
-
-The kind of exception (e.g. "TUE", "threshold",
-"sport-specific").
-
 ### requiresFormalApproval
 *Domain:* `UsageException`
 
 *Range:* `xsd:boolean`
 
-Whether this exception requires a formal application and approval
-
+Whether this exception requires a formal application and approval.
 
 ### icdCode
 *Domain:* `HealthCondition`
