@@ -1,0 +1,381 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology/"
+     xml:base="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology">
+        <rdfs:comment>The banned substances and practices (doping) in Olympic games ontology</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#affectsPhysiologicalSystem -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#affectsPhysiologicalSystem">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#ProhibitedSubstance"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#PhysiologicalSystem"/>
+        <rdfs:comment>States which bodily system a substance affects, and therefore why it enhances performance. Only populated for the ProhibitedSubstance individuals</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#appliesToCondition -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#appliesToCondition">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#permitsUseOf"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#UsageException"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#HealthCondition"/>
+        <rdfs:comment>States which health condition justifies a given usage exception</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#appliesToSport -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#appliesToSport">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#Doping"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#Sport"/>
+        <rdfs:comment>Identifies which sport a given SportSpecificRule applies to</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#belongsToClass -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#belongsToClass">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#Doping"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#WADAClass"/>
+        <rdfs:comment>Links an item to the regulatory class(es) it falls under</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#hasProhibitionScope -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#hasProhibitionScope">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#Sport"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#ProhibitionScope"/>
+        <rdfs:comment>States whether a sport specific rule is prohibited in-competition, or at all times</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#hasUsageException -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#hasUsageException">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#Doping"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#UsageException"/>
+        <rdfs:comment>Links an item to an exception that permits its use under defined conditions</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#permitsUseOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#permitsUseOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#HealthCondition"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#UsageException"/>
+        <rdfs:comment>States what usage exception is applied to a given health condition</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#casNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#casNumber">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#ProhibitedSubstance"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The CAS Registry Number. This is a universal chemical identifier. Retained specifically as the key for future alignment with external databases</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#classCode -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#classCode">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#WADAClass"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#hasZeroTolerance -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#hasZeroTolerance">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#ProhibitedSubstance"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>Whether any detected presence of the item constitutes a violation, as opposed to being subject to a permitted threshold.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#icdCode -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#icdCode">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#HealthCondition"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>External identifier for the Physiological condition, for future alignment with
+ICD-11 or SNOMED CT.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#isSpecified -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#isSpecified">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#Doping"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>Whether the item is classified by WADA as a &quot;specified&quot; substance/method (generally subject to more lenient sanctioning) as opposed to &quot;non-specified.&quot;</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#requiresFormalApproval -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#requiresFormalApproval">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#UsageException"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>Whether this exception requires a formal application and approval</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#sampleType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#sampleType">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#PermittedThreshold"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first>blood</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first>urine</rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+        <rdfs:comment>Which biological sample type the threshold or detection applies to. Can be
+&quot;urine&quot; or &quot;blood&quot;</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#thresholdUnit -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#thresholdUnit">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#PermittedThreshold"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>The unit of measurement for permittedThreshold (e.g. &quot;ng/mL&quot;)</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#thresholdValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#thresholdValue">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#PermittedThreshold"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <rdfs:comment>The numeric concentration limit for a permitted threshold, paired with thresholdUnit and sampleType</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#Doping -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#Doping">
+        <rdfs:comment>A substance or a method banned under the WADA Prohibited List. This is a general category for a doping</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#HealthCondition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#HealthCondition">
+        <rdfs:comment>A medical condition under which the use of a prohibited item is allowed</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#PermittedThreshold -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#PermittedThreshold">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#UsageException"/>
+        <rdfs:comment>A usage exception under which a Prohibited Substance is permitted for use up to a defined concentration limit in a biological sample (blood or urine), rather than being subject to zero tolerance</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#PhysiologicalSystem -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#PhysiologicalSystem">
+        <rdfs:comment>A physiological system within the body that is affected by a prohibited substance.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#ProhibitedMethod -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#ProhibitedMethod">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#Doping"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#ProhibitedSubstance"/>
+        <rdfs:comment>Type of manipulation that can be used to gain unfair advantage</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#ProhibitedSubstance -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#ProhibitedSubstance">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#Doping"/>
+        <rdfs:comment>Chemical substance that is used to enchance performance in sports</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#ProhibitionScope -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#ProhibitionScope">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#AllTimes"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#InCompetition"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment>The scope of a prohibition</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#Sport -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#Sport">
+        <rdfs:comment>An Olympic sport or discipline</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#TherapeuticUseExemption -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#TherapeuticUseExemption">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#UsageException"/>
+        <rdfs:comment>A usage exception granted on the basis of a documented health condition, permitting an athlete to use an otherwise-prohibited substance or method for legitimate medical treatment</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#UsageException -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#UsageException">
+        <rdfs:comment>A condition under which the prohibited Item is allowed in competition</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#WADAClass -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#WADAClass">
+        <rdfs:comment>A category defined by WADA for groupping prohibited items</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#AllTimes -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#AllTimes">
+        <rdf:type rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#ProhibitionScope"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#InCompetition -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#InCompetition">
+        <rdf:type rdf:resource="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#ProhibitionScope"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#InParticularSports -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#InParticularSports"/>
+    
+
+
+    <!-- http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#OutOfCompetition -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/AnnaMit/ontologies/2026/5/doping-ontology#OutOfCompetition"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
